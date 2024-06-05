@@ -1,6 +1,7 @@
 package Laberinto;
 
 import java.awt.Graphics;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,9 +16,10 @@ public class Juego extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	Laberinto laberinto = new Laberinto ();
+	int num;
 	Personaje personaje = new Personaje ();
 	
-	public Juego () {
+	public Juego (int num) {
 		addKeyListener(new KeyListener(){
 
 			@Override
@@ -28,7 +30,7 @@ public class Juego extends JPanel{
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				personaje.teclaPresionada(e);
+				personaje.teclaPresionada(e, num);
 				
 			}
 
@@ -49,15 +51,17 @@ public class Juego extends JPanel{
 		
 	}
 
-	public static void main (String []args) throws InterruptedException {
+	
+	
+	  public void inicializarJuego(int num) throws InterruptedException {
+	  JFrame miVentana = new JFrame ("Laberinto");
 		
-		JFrame miVentana = new JFrame ("Laberinto");
 		
-		Juego game = new Juego ();
+		Juego game = new Juego (num);
 		
 		miVentana.add(game); 
-		miVentana.setSize(920, 540);
-		miVentana.setLocation(300, 200);
+		miVentana.setSize(590, 360);
+		miVentana.setBounds(267, 85, 590, 360);
 		miVentana.setVisible(true);
 		
 		miVentana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,10 +74,8 @@ public class Juego extends JPanel{
 			
 			
 		}
-		
-		
-		
-	}
-	
 
+	}
+	 		
+	
 }
