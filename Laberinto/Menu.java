@@ -14,7 +14,7 @@ public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	Juego juego = new Juego ();
-
+	Juego2 juego2 = new Juego2 ();
 	/**
 	 * Launch the application.
 	 */
@@ -60,6 +60,22 @@ public class Menu extends JFrame {
 		});
 		btnNewButton.setBounds(155, 112, 85, 21);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Dificil");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Thread(() -> {
+                    try {
+                        juego2.iniciarJuego();
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }).start();
+				
+			}
+		});
+		btnNewButton_1.setBounds(155, 162, 85, 21);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

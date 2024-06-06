@@ -7,17 +7,17 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Juego extends JPanel {
+public class Juego2 extends JPanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2L;
-	LaberintoFacil laberinto = new LaberintoFacil();
-	Personaje personaje = new Personaje();
+	LaberintoDificil laberinto = new LaberintoDificil();
+	Personaje2 personaje = new Personaje2();
 	public static int nivel = 1;
 
-	public Juego() {
+	public Juego2() {
 		addKeyListener(new KeyListener() {
 
 			@Override
@@ -59,11 +59,11 @@ public class Juego extends JPanel {
 	}
 	
 
-	public void iniciarJuego () throws InterruptedException {
+	public void  iniciarJuego() throws InterruptedException {
 
 		JFrame miVentana = new JFrame("Laberinto");
 
-		Juego game = new Juego();
+		Juego2 game = new Juego2();
 
 		miVentana.add(game);
 		miVentana.setSize(920, 540);

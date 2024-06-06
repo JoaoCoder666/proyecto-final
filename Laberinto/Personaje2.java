@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-public class Personaje {
-	LaberintoFacil lab = new LaberintoFacil();
+public class Personaje2 {
+	LaberintoDificil lab = new LaberintoDificil();
 	private int x = 40, y = 40, ancho = 40, alto = 40, movimiento = 40;
 
 	public void paint(Graphics grafico) {
@@ -48,7 +48,7 @@ public class Personaje {
 		}
 		
 		if (x == 840 && y == 440) {
-			Juego.cambiarNivel();
+			Juego2.cambiarNivel();
 			x = 40;
 			y = 40;
 			
