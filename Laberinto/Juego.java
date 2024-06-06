@@ -124,7 +124,6 @@ public class Juego extends JPanel {
 	        miVentana.setLocation(300, 200);
 	        miVentana.setUndecorated(true);
 	        miVentana.setVisible(true);
-	        miVentana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	        while (true) {
 	            Thread.sleep(10);

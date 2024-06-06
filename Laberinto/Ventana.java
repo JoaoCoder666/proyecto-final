@@ -61,7 +61,7 @@ public class Ventana {
 		 * change background color
 		 * 
 		 */
-		Color colorHex = Color.decode("#DAF7A6");
+		Color colorHex = Color.decode("#94E5F8");
 		Container contentPane = frame.getContentPane();
         contentPane.setBackground(colorHex);
 		
@@ -151,8 +151,19 @@ public class Ventana {
 			{
 				JOptionPane.showMessageDialog(null, "~ Tres niveles sin obstaculos");
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				lblInfoPrNivel.setEnabled(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				lblInfoPrNivel.setEnabled(false);
+			}
 		});
 		lblInfoPrNivel.setIcon(new ImageIcon(Ventana.class.getResource("/resources/81147 (1).png")));
+		lblInfoPrNivel.setEnabled(false);
 
 		
 		JLabel lblInfoSegNivel = new JLabel("");
@@ -162,9 +173,19 @@ public class Ventana {
 			{
 				JOptionPane.showMessageDialog(null, "~ Tres niveles cada uno con un enemigo");
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				lblInfoSegNivel.setEnabled(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				lblInfoSegNivel.setEnabled(false);
+			}
 		});
 		lblInfoSegNivel.setIcon(new ImageIcon(Ventana.class.getResource("/resources/81147 (1).png")));
-		
+		lblInfoSegNivel.setEnabled(false);
 		
 		JLabel lblInfoTerNivel_1_1 = new JLabel("");
 		lblInfoTerNivel_1_1.addMouseListener(new MouseAdapter() {
@@ -173,8 +194,19 @@ public class Ventana {
 			{
 				JOptionPane.showMessageDialog(null, "~ Mapas aleatorios sin enemigos, pero con un reto de tiempo");
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				lblInfoTerNivel_1_1.setEnabled(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				lblInfoTerNivel_1_1.setEnabled(false);
+			}
 		});
 		lblInfoTerNivel_1_1.setIcon(new ImageIcon(Ventana.class.getResource("/resources/81147 (1).png")));
+		lblInfoTerNivel_1_1.setEnabled(false);
 		
 		/*
 		 * Create the button that guides to the easy mode
@@ -194,11 +226,6 @@ public class Ventana {
                         e1.printStackTrace();
                     }
                 }).start();
-				
-				btnModoFacil.setVisible(false);
-				btnModoFacil.setEnabled(false);
-				lblInfoPrNivel.setVisible(false);
-				lblInfoPrNivel.setEnabled(false);
 			}
 		});
 		btnModoFacil.setIcon(new ImageIcon(Ventana.class.getResource("/resources/yawning-face-emoji-2005x2048-npui9qri (1).png")));
@@ -218,12 +245,11 @@ public class Ventana {
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
+                    catch(java.awt.IllegalComponentStateException icse)
+                    {
+                    	icse.printStackTrace();
+                    }
                 }).start();
-				
-				btnModoDificil.setVisible(false);
-				btnModoDificil.setEnabled(false);
-				lblInfoSegNivel.setVisible(false);
-				lblInfoSegNivel.setEnabled(false);
 				
 			}
 		});
@@ -248,8 +274,19 @@ public class Ventana {
 						+ "\n~ Los enemigos reiniciaran el mapa completo "
 						+ "\n~ Si el timpo se acaba perderá ");
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				lblAyuda.setEnabled(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				lblAyuda.setEnabled(false);
+			}
 		});
 		lblAyuda.setIcon(new ImageIcon(Ventana.class.getResource("/resources/Question_Mark_Icon (1).png")));
+		lblAyuda.setEnabled(false);
 		
 		JLabel lblPodio = new JLabel("");
 		lblPodio.addMouseListener(new MouseAdapter() {
