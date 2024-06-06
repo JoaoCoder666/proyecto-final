@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class LaberintoFacil {
 	private int fila = 0, columna = 0, numeroFilas = 13, numeroColumnas = 23, anchoBloque = 40, altoBloque = 40;
 	private int [][]lab = new int[13][23] ;
-	
+
 	public void paint(Graphics grafico) {
 		int laberinto[][] = obtieneLaberinto();
 		for (fila = 0; fila < numeroFilas; fila++) {

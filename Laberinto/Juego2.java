@@ -16,6 +16,7 @@ public class Juego2 extends JPanel {
 	LaberintoDificil laberinto = new LaberintoDificil();
 	Personaje2 personaje = new Personaje2();
 	public static int nivel = 1;
+	JFrame miVentana = new JFrame("Laberinto");
 
 	public Juego2() {
 		addKeyListener(new KeyListener() {
@@ -61,16 +62,15 @@ public class Juego2 extends JPanel {
 
 	public void  iniciarJuego() throws InterruptedException {
 
-		JFrame miVentana = new JFrame("Laberinto");
+
 
 		Juego2 game = new Juego2();
 
 		miVentana.add(game);
 		miVentana.setSize(920, 540);
 		miVentana.setLocation(300, 200);
+		miVentana.setUndecorated(true);
 		miVentana.setVisible(true);
-
-		miVentana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		while (true) {
 
@@ -86,5 +86,11 @@ public class Juego2 extends JPanel {
 		}
 
 	}
+	public void cerrarJuego() {
+        
+        if (miVentana != null) {
+            miVentana.dispose();
+        }
+    }
 
 }
