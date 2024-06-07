@@ -1,4 +1,4 @@
-package Laberinto;
+package laberinto;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,6 +6,10 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Personaje {
+	
+	
+	
+	
 	LaberintoFacil lab = new LaberintoFacil();
 	private int x = 40, y = 40, ancho = 40, alto = 40, movimiento = 40;
 	

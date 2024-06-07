@@ -1,4 +1,4 @@
-package Laberinto;
+package laberinto;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -67,9 +67,9 @@ public class Juego2 extends JPanel {
 		Juego2 game = new Juego2();
 
 		miVentana.add(game);
-		miVentana.setSize(920, 540);
-		miVentana.setLocation(300, 200);
 		miVentana.setUndecorated(true);
+		miVentana.setSize(920, 540);
+		miVentana.setLocation(500, 200);
 		miVentana.setVisible(true);
 
 		while (true) {
@@ -78,8 +78,7 @@ public class Juego2 extends JPanel {
 			game.repaint();
 			
 			if (obtieneNivel () >3) {
-				miVentana.setVisible(false);
-				
+				miVentana.setVisible(false);				
 				break;
 			}
 
@@ -92,5 +91,8 @@ public class Juego2 extends JPanel {
             miVentana.dispose();
         }
     }
-
+	
+	
+	
+	
 }

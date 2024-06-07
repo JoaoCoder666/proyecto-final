@@ -1,6 +1,4 @@
-package Laberinto;
-
-import java.awt.EventQueue;
+package laberinto;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,23 +23,10 @@ public class Ventana {
 
 	Juego juego = new Juego ();
 	Juego2 juego2 = new Juego2 ();
-	private JFrame frame;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana window = new Ventana();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	JuegoR juegoR = new JuegoR ();
+	public JFrame frame;
 
+	
 	/**
 	 * Create the application.
 	 */
@@ -54,8 +39,8 @@ public class Ventana {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 460, 340);
 		frame.setUndecorated(true);
+		frame.setBounds(100, 100, 460, 340);
 		
 		/*
 		 * change background color
@@ -127,6 +112,10 @@ public class Ventana {
 		lblCloseScreen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCloseScreen.setIcon(new ImageIcon(Ventana.class.getResource("/resources/99862 (1).png")));
 		
+		/*
+		 * label for the aplication's on-screen title
+		 * 
+		 */
 		JLabel lblTituloJuego = new JLabel("Magic Maze");
 		lblTituloJuego.addMouseListener(new MouseAdapter() {
 			@Override
@@ -144,6 +133,9 @@ public class Ventana {
 		lblTituloJuego.setFont(new Font("Bookman Old Style", Font.BOLD, 52));
 		lblTituloJuego.setEnabled(false);
 		
+		/*
+		 * label that guides to the easy mode's info
+		 */
 		JLabel lblInfoPrNivel = new JLabel("");
 		lblInfoPrNivel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -165,7 +157,9 @@ public class Ventana {
 		lblInfoPrNivel.setIcon(new ImageIcon(Ventana.class.getResource("/resources/81147 (1).png")));
 		lblInfoPrNivel.setEnabled(false);
 
-		
+		/*
+		 * label that guides to the hard mode's info
+		 */
 		JLabel lblInfoSegNivel = new JLabel("");
 		lblInfoSegNivel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -187,6 +181,9 @@ public class Ventana {
 		lblInfoSegNivel.setIcon(new ImageIcon(Ventana.class.getResource("/resources/81147 (1).png")));
 		lblInfoSegNivel.setEnabled(false);
 		
+		/*
+		 * label that guides to the time-race mode's info
+		 */
 		JLabel lblInfoTerNivel_1_1 = new JLabel("");
 		lblInfoTerNivel_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -226,6 +223,11 @@ public class Ventana {
                         e1.printStackTrace();
                     }
                 }).start();
+				
+				
+				Contador cont = new Contador();
+				 
+				 cont.setVisible(true);
 			}
 		});
 		btnModoFacil.setIcon(new ImageIcon(Ventana.class.getResource("/resources/yawning-face-emoji-2005x2048-npui9qri (1).png")));
@@ -251,6 +253,10 @@ public class Ventana {
                     }
                 }).start();
 				
+				
+				Contador cont = new Contador();
+				 
+				 cont.setVisible(true);
 			}
 		});
 		btnModoDificil.setIcon(new ImageIcon(Ventana.class.getResource("/resources/grimacing-face-emoji-2048x2048-zs0bknyt (1).png")));
@@ -259,6 +265,22 @@ public class Ventana {
 		 * Creates the events handlers
 		 */
 		JButton btnContraReloj = new JButton("Contra Reloj");
+		btnContraReloj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Thread(() -> {
+                    try {
+                        juegoR.iniciarJuego();
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }).start();
+				
+				
+				ContadorR cont = new ContadorR();
+				cont.setVisible(true);
+				
+			}
+		});
 		btnContraReloj.setFont(new Font("Bookman Old Style", Font.BOLD, 11));
 		btnContraReloj.setForeground(Color.DARK_GRAY);
 		btnContraReloj.setBackground(Color.LIGHT_GRAY);
@@ -288,39 +310,28 @@ public class Ventana {
 		lblAyuda.setIcon(new ImageIcon(Ventana.class.getResource("/resources/Question_Mark_Icon (1).png")));
 		lblAyuda.setEnabled(false);
 		
-		JLabel lblPodio = new JLabel("");
-		lblPodio.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				lblPodio.setEnabled(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				lblPodio.setEnabled(false);
-			}
-		});
-		lblPodio.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPodio.setIcon(new ImageIcon(Ventana.class.getResource("/resources/607834 (1).png")));
-		lblPodio.setEnabled(false);
-		
+		/*
+		 * label that shows the dancing cat in the corner
+		 */
 		JLabel lblGatoBailando = new JLabel("");
 		lblGatoBailando.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblGatoBailando.setIcon(new ImageIcon(Ventana.class.getResource("/resources/cat-meme-funny.gif")));
 		
+		/*
+		 * group layout that helps re-organize the items in the frame
+		 */
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(10)
 					.addComponent(lblTituloJuego)
-					.addPreferredGap(ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
 					.addComponent(lblFullScreen)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblCloseScreen)
 					.addGap(12))
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(21)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(btnModoFacil, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -332,12 +343,10 @@ public class Ventana {
 						.addComponent(lblInfoSegNivel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(lblInfoTerNivel_1_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblAyuda, Alignment.TRAILING)
-						.addComponent(lblPodio, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
+					.addComponent(lblAyuda)
 					.addContainerGap())
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(553, Short.MAX_VALUE)
+					.addContainerGap(587, Short.MAX_VALUE)
 					.addComponent(lblGatoBailando, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
@@ -345,23 +354,22 @@ public class Ventana {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblCloseScreen)
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblPodio, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblAyuda, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
+								.addGap(213)
+								.addComponent(lblAyuda, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 0, Short.MAX_VALUE))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblTituloJuego, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 								.addGap(82)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblInfoPrNivel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(lblInfoPrNivel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 									.addComponent(btnModoFacil, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
 								.addGap(13)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblInfoSegNivel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(lblInfoSegNivel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 									.addComponent(btnModoDificil))
 								.addGap(16)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)

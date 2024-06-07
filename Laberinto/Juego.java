@@ -1,8 +1,9 @@
-package Laberinto;
+package laberinto;
 
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 
@@ -27,6 +28,8 @@ public class Juego extends JPanel {
 	    private Timer timer1;
 	    private Timer timer2;
 	    JFrame miVentana = new JFrame("Laberinto");
+	    
+	    private String Name;
 
 	    public Juego() {
 	        addKeyListener(new KeyListener() {
@@ -120,9 +123,9 @@ public class Juego extends JPanel {
 	        
 	        detenerTimers();
 	        miVentana.add(game);
-	        miVentana.setSize(920, 540);
-	        miVentana.setLocation(300, 200);
 	        miVentana.setUndecorated(true);
+	        miVentana.setSize(920, 540);
+	        miVentana.setLocation(500, 200);
 	        miVentana.setVisible(true);
 
 	        while (true) {
@@ -131,6 +134,9 @@ public class Juego extends JPanel {
 
 	            if (obtieneNivel() > 3) {
 	                miVentana.setVisible(false);
+	                
+	                Name = JOptionPane.showInputDialog("Ingrese su nombre");
+	                
 	                break;
 	            }
 
@@ -200,6 +206,16 @@ public class Juego extends JPanel {
 	        }
 	    }
 
+		public String getName() {
+			return Name;
+		}
+
+		public void setName(String name) {
+			Name = name;
+		}
+
+	    
+	    
             
 }
        

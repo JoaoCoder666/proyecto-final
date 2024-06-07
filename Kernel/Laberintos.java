@@ -1,4 +1,4 @@
-package Kernel;
+package kernel;
 
 public class Laberintos {
 	 int[][] laberinto = new int[13][23]; // Tamaño del laberinto, ajusta si es necesario
